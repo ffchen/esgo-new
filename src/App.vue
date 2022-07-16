@@ -1,12 +1,23 @@
 <script setup lang="ts">
+import { NConfigProvider, zhCN, dateZhCN } from "naive-ui";
+import { BASE_THEME } from "./theme/index";
 import SideBar from "@/components/common/SideBar.vue";
+import PageNav from "@/components/common/PageNav.vue";
 </script>
 
 <template>
-  <div class="container">
-    <side-bar></side-bar>
-    <div class="main">1111</div>
-  </div>
+  <n-config-provider
+    :locale="zhCN"
+    :date-locale="dateZhCN"
+    :theme-overrides="BASE_THEME"
+  >
+    <div class="container">
+      <side-bar></side-bar>
+      <div class="main">
+        <page-nav></page-nav>
+      </div>
+    </div>
+  </n-config-provider>
 </template>
 
 <style scoped>
@@ -21,6 +32,5 @@ import SideBar from "@/components/common/SideBar.vue";
 
 .main {
   width: 1020px;
-  border: 1px solid #ff0;
 }
 </style>

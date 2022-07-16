@@ -6,7 +6,8 @@
   
     color-scheme: light dark;
     color: #ABB4BD;
-    background-color: #060608;
+    --box-background-color:#191A23;
+    --background-color: #060608;
     --scrollbar-bg: rgb(1 2 3 / 40%);
   
     font-synthesis: none;
@@ -14,6 +15,10 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     -webkit-text-size-adjust: 100%;
+  }
+
+  body{
+    background-color: var(--background-color);
   }
   
   a {
@@ -61,11 +66,13 @@
   .card {
     padding: 2em;
   }
-  
+
+
   #app {
     max-width: 1280px;
     margin: 0 auto;
     text-align: center;
+    
   }
   
   ::-webkit-scrollbar {

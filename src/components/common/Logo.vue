@@ -10,12 +10,12 @@ const logo = ref("logo-txt");
   </div>
 </template>
 
-<style scoped>
+<style lang="less" scoped>
 .logo {
   width: 100%;
   height: 60px;
   display: flex;
-  background: #191a23;
+  background-color: var(--box-background-color);
   box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.25);
   align-items: center;
   justify-content: center;
