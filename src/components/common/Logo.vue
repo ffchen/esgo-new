@@ -1,12 +1,19 @@
 <script setup lang="ts">
 import { ref } from "vue";
+import { useRouter } from "vue-router";
+import logoUrl from "@/assets/images/logo.png";
 
-const logo = ref("logo-txt");
+const router = useRouter();
+const logoTxT = ref("logo-txt");
+
+function goHome() {
+  router.push("/");
+}
 </script>
 
 <template>
   <div class="logo">
-    <img src="@/assets/images/logo.png" :alt="logo" />
+    <img :src="logoUrl" :alt="logoTxT" @click="goHome" />
   </div>
 </template>
 
@@ -23,6 +30,7 @@ const logo = ref("logo-txt");
     display: block;
     width: 149px;
     height: 40px;
+    cursor: pointer;
   }
 }
 </style>

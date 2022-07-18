@@ -1,6 +1,8 @@
 <script setup lang="ts">
+import { computed } from "vue";
+import { useRoute, useRouter } from "vue-router";
 import { NTabs, NTabPane, NConfigProvider } from "naive-ui";
-import { NAV_TABS } from "../../theme/index";
+import { NAV_TABS } from "@/theme/index";
 
 interface NavItem {
   name: string;
@@ -9,34 +11,41 @@ interface NavItem {
 
 const NavList: NavItem[] = [
   {
-    name: "index",
+    name: "/index",
     tab: "首页",
   },
   {
-    name: "score",
+    name: "/score",
     tab: "即时比分",
   },
   {
-    name: "match",
+    name: "/match",
     tab: "赛事",
   },
   {
-    name: "recommend",
+    name: "/recommend",
     tab: "比赛推荐",
   },
   {
-    name: "discount",
+    name: "/discount",
     tab: "平台优惠汇总",
   },
 ];
+const route = useRoute();
+const router = useRouter();
+const onRoutes = computed(() => {
+  return route.path;
+});
 
-
+const goPage = (e) => {
+  router.push(e);
+};
 </script>
 
 <template>
   <div class="nav">
     <NConfigProvider :theme-overrides="NAV_TABS">
-      <n-tabs type="line" class="custom-tabs" animated>
+      <n-tabs type="line" class="custom-tabs" :value="onRoutes" @update:value="goPage" animated>
         <n-tab-pane
           v-for="item in NavList"
           :key="item.name"
@@ -56,5 +65,8 @@ const NavList: NavItem[] = [
   box-sizing: border-box;
   padding: 0 100px;
   background-color: var(--box-background-color);
+}
+:deep(.n-tabs.custom-tabs.n-tabs--line-type .n-tabs-tab:hover) {
+  transition: 0.3s;
 }
 </style>
